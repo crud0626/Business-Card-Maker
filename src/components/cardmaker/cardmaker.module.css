@@ -1,0 +1,45 @@
+@value makerGreen from './../../common/colors.css';
+@value makerWhite from './../../common/colors.css';
+
+.cardmaker_container {
+  width: 50%;
+  border-right: 1px solid black;
+  text-align: center;
+}
+
+.cardmaker_container > p {
+  color: makerGreen;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.cardmaker_section {
+  margin: 10px auto 0 auto;
+  width: 95%;
+}
+
+.cardmaker_section > * {
+  width: 100%;
+}
+
+.inputs_container {
+  display: flex;
+}
+
+.inputs_container > * {
+  min-width: 0;
+  flex-grow: 1;
+  font-size: 1rem;
+  padding: 4px 0 4px 5px;
+}
+
+.inputs_btns > button {
+  background-color: transparent;
+  border: 1px solid gray;
+  cursor: pointer;
+}
+
+.inputs_btns > .del_btn {
+  color: makerWhite;
+  background-color: makerGreen;
+}

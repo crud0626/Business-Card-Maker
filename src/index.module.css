@@ -1,12 +1,14 @@
-@value makerBlack from './common/colors.css';
+@value makerGrey from './common/colors.css';
 
 * {
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
+  background-color: makerGrey;
 }
 
 body {
@@ -16,10 +18,13 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: makerGrey;
 }
 
 section {
+  width: 90vw;
   height: 100vh;
+  margin: auto;
 }
 
 code {

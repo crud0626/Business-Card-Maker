@@ -1,0 +1,35 @@
+@value makerGreen from './../../common/colors.css';
+
+.section {
+  display: flex;
+  height: 80%;
+  background-color: white;
+}
+
+.section_top {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 15%;
+  color: white;
+  background-color: makerGreen;
+}
+
+.section_top > img {
+  width: 50px;
+}
+
+.section_top > h1 {
+  margin: 0;
+}
+
+.section_bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5%;
+  background-color: makerGreen;
+  color: white;
+  text-align: center;
+}
