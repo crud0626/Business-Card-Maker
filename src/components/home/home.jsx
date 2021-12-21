@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './home.module.css';
 
 const Home = (props) => (
@@ -10,8 +11,9 @@ const Home = (props) => (
             <div className={styles.login_center}>
                 <p>Login</p>
                 <div className={styles.social_btns}>
-                    <button>Google</button>
-                    <button>Github</button>
+                    {/* 임시 */}
+                    <Link to={"/section"}><div class="g-signin2" data-onsuccess="onSignIn"></div></Link>
+                    <Link to={"/section"}>Github</Link>
                 </div>
             </div>
             <div className={styles.login_bottom}>

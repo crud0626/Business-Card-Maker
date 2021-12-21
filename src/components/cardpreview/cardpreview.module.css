@@ -1,6 +1,11 @@
 @value makerShadow from './../../common/colors.css';
 @value makerGreen from './../../common/colors.css';
 @value makerWheat from './../../common/colors.css';
+@value makerBlack from './../../common/colors.css';
+@value makerWhite from './../../common/colors.css';
+@value makerLightGrey from './../../common/colors.css';
+@value makerGrey from './../../common/colors.css';
+@value makerPink from './../../common/colors.css';
 
 .cardpreview_container {
   width: 50%;
@@ -18,8 +23,6 @@
   width: 70%;
   margin: auto;
   padding: 10px;
-  /* color 임시. */
-  background-color: lightcoral;
   border-radius: 10px;
   box-shadow: makerShadow;
 }
@@ -51,4 +54,37 @@
 .line {
   width: 100%;
   border: 1px solid makerWheat;
+  margin: 5px 0 2px 0;
+}
+
+.info > p {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 5px 0 0 0;
+}
+
+/* backgrounds */
+
+.makerBlack {
+  background-color: makerBlack;
+}
+
+.makerWhite {
+  background-color: makerWhite;
+}
+
+.makerLightGrey {
+  background-color: makerLightGrey;
+}
+
+.makerGrey {
+  background-color: makerGrey;
+}
+
+.makerPink {
+  background-color: makerPink;
+}
+
+.makerGreen {
+  background-color: makerGreen;
 }

@@ -4,11 +4,23 @@ import styles from './cardpreview.module.css';
 // 컴포넌트 하나 더 쪼개야된다. p태그 들어있음.
 
 const CardPreview = (props) => {
-    console.log(props.card);
+    let bg = {};
+    if (props.card.color === "white" || props.card.color ===  "#e8e7e6") {
+        bg = {
+            "background-color": props.card.color,
+            "color": "black"
+        };
+    } else {
+        bg = {
+            "background-color": props.card.color,
+            "color": "white"
+        };
+    }
+    
     return (
             <div className={styles.cardpreview_container}>
                 <p>Card Preview</p>
-                <div className={styles.card_container}>
+                <div style={bg} className={styles.card_container}>
                     <div className={styles.thumbnail}>
                         <img src="./images/default_logo.png" alt="default logo" />
                     </div>

@@ -7,11 +7,12 @@ const Section = (props) => {
     const [cards, setCards] = useState([
         {
             id: 1,
-            name: "taeho",
-            company: "glab",
-            title: "aa",
-            email: "bb@naver.com",
-            message: "cc",
+            name: "React",
+            company: "React corp.",
+            color: "#385461",
+            title: "FrontEnd Developer",
+            email: "react@gmail.com",
+            message: "I want SPA!",
         }
     ]);
 
@@ -23,8 +24,15 @@ const Section = (props) => {
         setCards(arr);
     }
 
+    const deleteCard = (id) => {
+        const index = id - 1;
+        const arr = [...cards];
+        arr.splice(index, 1);
+        setCards(arr);
+    }
+
     return (
-            <>
+            <section>
                 <div className={styles.section_top}>
                     <img src="./images/logo.png" alt="main logo" />
                     <h1 onClick={onKeyUp}>Business Card Maker</h1>
@@ -34,6 +42,7 @@ const Section = (props) => {
                         <CardMaker 
                             card={card}
                             onKeyUp={onKeyUp}
+                            deleteCard={deleteCard}
                         />
                     ))}
                     {cards.map((card) => (
@@ -45,7 +54,7 @@ const Section = (props) => {
                 <div className={styles.section_bottom}>
                     <span>Welcome to Business Card Maker!</span>
                 </div>
-            </>
+            </section>
     );
 
 };
