@@ -1,4 +1,3 @@
-// Import the functions you need from the SDKs you need
 import firebase from "firebase/app";
 
 const firebaseConfig = {
@@ -7,5 +6,5 @@ const firebaseConfig = {
   projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID
 };
 
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+const firebaseApp = firebase.initializeApp(firebaseConfig);
+export default firebaseApp;

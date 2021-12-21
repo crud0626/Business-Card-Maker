@@ -1,6 +1,4 @@
-@value makerShadow from './../../common/colors.css';
-@value makerGreen from './../../common/colors.css';
-@value makerWheat from './../../common/colors.css';
+@value makerShadow, makerGreen, makerWheat from './../../common/colors.css';
 
 .cardpreview_container {
   width: 50%;

@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import CardMaker from '../cardmaker/cardmaker';
 import CardPreview from '../cardpreview/cardpreview';
 import styles from './section.module.css';
 
 const Section = (props) => {
+    const navigate = useNavigate();
+
     const [cards, setCards] = useState([
         {
             id: 1,
@@ -31,12 +34,21 @@ const Section = (props) => {
         setCards(arr);
     }
 
+    const onLogout = () => {
+        props.authService
+            .logout()
+            .then(props.successLogOut())
+            .catch((err) => console.log(`로그아웃 도중 에러가 발생했습니다 : ${err}`))
+            .then(navigate('/'));
+    }
+
 
     return (
             <section>
                 <div className={styles.section_top}>
                     <img src="./images/logo.png" alt="main logo" />
                     <h1 onClick={onKeyUp}>Business Card Maker</h1>
+                    <button className={styles.logout_btn} onClick={onLogout}>Logout</button>
                 </div>
                 <div className={styles.section}>
                     {cards.map((card) => (
