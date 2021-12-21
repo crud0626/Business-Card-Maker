@@ -1,11 +1,6 @@
 @value makerShadow from './../../common/colors.css';
 @value makerGreen from './../../common/colors.css';
 @value makerWheat from './../../common/colors.css';
-@value makerBlack from './../../common/colors.css';
-@value makerWhite from './../../common/colors.css';
-@value makerLightGrey from './../../common/colors.css';
-@value makerGrey from './../../common/colors.css';
-@value makerPink from './../../common/colors.css';
 
 .cardpreview_container {
   width: 50%;
@@ -61,30 +56,4 @@
   font-size: 1rem;
   font-weight: bold;
   margin: 5px 0 0 0;
-}
-
-/* backgrounds */
-
-.makerBlack {
-  background-color: makerBlack;
-}
-
-.makerWhite {
-  background-color: makerWhite;
-}
-
-.makerLightGrey {
-  background-color: makerLightGrey;
-}
-
-.makerGrey {
-  background-color: makerGrey;
-}
-
-.makerPink {
-  background-color: makerPink;
-}
-
-.makerGreen {
-  background-color: makerGreen;
 }

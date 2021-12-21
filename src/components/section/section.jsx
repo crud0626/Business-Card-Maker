@@ -31,6 +31,7 @@ const Section = (props) => {
         setCards(arr);
     }
 
+
     return (
             <section>
                 <div className={styles.section_top}>
