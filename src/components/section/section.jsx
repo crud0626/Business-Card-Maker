@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import CardMaker from '../cardmaker/cardmaker';
-import CardPreview from '../cardpreview/cardpreview';
+import CardMakerSection from '../cardmakersection/cardmakersection';
+import CardPreviewSection from '../cardpreviewsection/cardpreviewsection';
+
 import styles from './section.module.css';
 
 const Section = (props) => {
@@ -10,12 +11,12 @@ const Section = (props) => {
     const [cards, setCards] = useState([
         {
             id: 1,
-            name: "React",
-            company: "React corp.",
+            name: "Name",
+            company: "Company",
             color: "#385461",
-            title: "FrontEnd Developer",
-            email: "react@gmail.com",
-            message: "I want SPA!",
+            title: "Title",
+            email: "E-mail",
+            message: "Message",
         }
     ]);
 
@@ -24,6 +25,22 @@ const Section = (props) => {
         const index = id - 1;
         const arr = [...cards];
         arr[index][name] = value;
+        setCards(arr);
+    }
+
+    const addCard = () => {
+        const arr = [...cards];
+        arr.push({
+            id: arr.length + 1,
+            name: "Name",
+            company: "Company",
+            color: "#385461",
+            title: "Title",
+            email: "E-mail",
+            message: "Message",
+        });
+        console.log(arr);
+        console.log(arr.length);
         setCards(arr);
     }
 
@@ -51,18 +68,15 @@ const Section = (props) => {
                     <button className={styles.logout_btn} onClick={onLogout}>Logout</button>
                 </div>
                 <div className={styles.section}>
-                    {cards.map((card) => (
-                        <CardMaker 
-                            card={card}
-                            onKeyUp={onKeyUp}
-                            deleteCard={deleteCard}
-                        />
-                    ))}
-                    {cards.map((card) => (
-                        <CardPreview
-                            card={card}
-                        />
-                    ))}
+                    <CardMakerSection 
+                        cards={cards}
+                        onKeyUp={onKeyUp}
+                        addCard={addCard}
+                        deleteCard={deleteCard}
+                    />
+                    <CardPreviewSection
+                        cards={cards}
+                    />
                 </div>
                 <div className={styles.section_bottom}>
                     <span>Welcome to Business Card Maker!</span>

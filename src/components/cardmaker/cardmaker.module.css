@@ -1,29 +1,12 @@
-@value makerGreen from './../../common/colors.css';
-@value makerWhite from './../../common/colors.css';
+@value makerWhite, makerGreen from './../../common/colors.css';
 
-.cardmaker_container {
-  width: 50%;
-  border-right: 1px solid black;
-  text-align: center;
-}
-
-.cardmaker_container > p {
-  color: makerGreen;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.cardmaker_section {
-  margin: 10px auto 0 auto;
-  width: 95%;
-}
-
-.cardmaker_section > * {
-  width: 100%;
+.card_container {
+  margin-bottom: 20px;
 }
 
 .inputs_container {
   display: flex;
+  width: 100%;
 }
 
 .inputs_container > * {
@@ -42,4 +25,8 @@
 .inputs_btns > .del_btn {
   color: makerWhite;
   background-color: makerGreen;
+}
+
+.addBtn_container {
+  margin-top: 20px;
 }

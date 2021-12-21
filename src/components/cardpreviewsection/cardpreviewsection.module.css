@@ -1,0 +1,10 @@
+.cardpreview_container {
+  width: 50%;
+  text-align: center;
+}
+
+.cardpreview_container > p {
+  color: makerGreen;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
