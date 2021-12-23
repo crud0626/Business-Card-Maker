@@ -11,10 +11,10 @@ const CardMaker = (props) => {
     
     return (
         <div className={styles.card_container}>
-            <div key={props.card.id} className={styles.inputs_container}>
+            <div className={styles.inputs_container}>
                 <input type="text" name='name' placeholder='Name' value={props.card.name} onChange={onInputEvent} />
                 <input type="text" name='company' placeholder='Company' value={props.card.company} onChange={onInputEvent} />
-                <select name="color" onChange={onInputEvent}>
+                <select name="color" value={props.card.color} onChange={onInputEvent}>
                     <option value="#385461">Green</option>
                     <option value="white">White</option>
                     <option value="black">Black</option>

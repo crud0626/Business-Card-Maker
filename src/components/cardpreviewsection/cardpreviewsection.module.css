@@ -1,6 +1,9 @@
+@value makerGreen from './../../common/colors.css';
+
 .cardpreview_container {
   width: 50%;
   text-align: center;
+  overflow-y: scroll;
 }
 
 .cardpreview_container > p {

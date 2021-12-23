@@ -8,6 +8,7 @@ const CardPreviewSection = ({cards}) => {
                 <p>Card Preview</p>
                 {cards.map((card) => (
                     <CardPreview 
+                        key={card.id}
                         card={card}
                     />
                 ))}

@@ -5,12 +5,12 @@ const CardPreview = ({card}) => {
     let bg = {};
     if (card.color === "white" || card.color ===  "#e8e7e6") {
         bg = {
-            "background-color": card.color,
+            "backgroundColor": card.color,
             "color": "black"
         };
     } else {
         bg = {
-            "background-color": card.color,
+            "backgroundColor": card.color,
             "color": "white"
         };
     }

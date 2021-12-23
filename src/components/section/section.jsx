@@ -23,6 +23,7 @@ const Section = (props) => {
         message: "",
     }]);
 
+    // index말고 다른걸로 수정하기.
     const onKeyUp = (id, name, value) => {
         const index = id - 1;
         const arr = [...cards];
@@ -45,19 +46,20 @@ const Section = (props) => {
             }
         )
         setCards(arr);
+        DB.writeUserData(state.id, arr);
     }
 
     const deleteCard = (id) => {
         const index = id - 1;
-        let test = {...cards};
-        test.cards.splice(index, 1);
-        setCards(test);
+        let arr = [...cards];
+        arr.splice(index, 1);
+        setCards(arr);
+        DB.writeUserData(state.id, arr);
     }
 
     const onLogout = () => {
         props.authService
             .logout()
-            .then(props.successLogOut())
             .catch((err) => console.log(`로그아웃 도중 에러가 발생했습니다 : ${err}`))
             .then(navigate('/'));
     }

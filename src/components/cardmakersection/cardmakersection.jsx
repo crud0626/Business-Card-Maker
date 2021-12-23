@@ -9,6 +9,7 @@ const CardMakerSection = (props) => {
             <div className={styles.cardmaker_section}>
             {props.cards.map((card) => (
                 <CardMaker 
+                    key={card.id}
                     card={card}
                     onKeyUp={props.onKeyUp}
                     deleteCard={props.deleteCard}
