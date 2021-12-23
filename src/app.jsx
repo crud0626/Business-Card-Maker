@@ -5,20 +5,21 @@ import Section from './components/section/section';
 
 
 function App({authService}) {
+
   const [user, setUser] = useState({});
-  let loggedIn = false;
+  // let loggedIn = false;
 
   // 파라미터값은 정상.
-  const successLogin = (user) => {
-    setUser(user);
-    if (user.id) {
-      loggedIn = true;
-    }
+  const successLogin = (response) => {
+    setUser(response.user.uid);
+    // if (user.id) {
+      // loggedIn = true;
+    // }
   }
 
   // User초기화 해야 하므로 다시 setUser
   const successLogOut = () => {
-    loggedIn = false;
+    // loggedIn = false;
     setUser({});
   }
 
@@ -29,7 +30,6 @@ function App({authService}) {
           {<Home
             authService={authService}
             successLogin={successLogin}
-            thumbnail={user.picture}
           />}
         />
         <Route path="/section" element={<Section 

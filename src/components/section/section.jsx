@@ -1,54 +1,57 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import CardMakerSection from '../cardmakersection/cardmakersection';
 import CardPreviewSection from '../cardpreviewsection/cardpreviewsection';
 
 import styles from './section.module.css';
+import Database from '../../service/database';
+
 
 const Section = (props) => {
     const navigate = useNavigate();
+    const { state } = useLocation();
 
-    const [cards, setCards] = useState([
-        {
-            id: 1,
-            name: "Name",
-            company: "Company",
-            color: "#385461",
-            title: "Title",
-            email: "E-mail",
-            message: "Message",
-        }
-    ]);
+    const DB = new Database();
+
+    const [cards, setCards] = useState([{
+        id: 1,
+        name: "",
+        company: "",
+        color: "#385461",
+        title: "",
+        email: "",
+        message: "",
+    }]);
 
     const onKeyUp = (id, name, value) => {
-        // 아 인덱스로 쓰는거 진짜 마음에 안드는데 방법이 생각이 안난다.
         const index = id - 1;
         const arr = [...cards];
         arr[index][name] = value;
         setCards(arr);
+        DB.writeUserData(state.id, arr);
     }
 
     const addCard = () => {
-        const arr = [...cards];
-        arr.push({
-            id: arr.length + 1,
-            name: "Name",
-            company: "Company",
-            color: "#385461",
-            title: "Title",
-            email: "E-mail",
-            message: "Message",
-        });
-        console.log(arr);
-        console.log(arr.length);
+        let arr = [...cards];
+        arr.push(
+            {
+                id: cards[cards.length - 1].id + 1,
+                name: "",
+                company: "",
+                color: "#385461",
+                title: "",
+                email: "",
+                message: "",
+            }
+        )
         setCards(arr);
     }
 
     const deleteCard = (id) => {
         const index = id - 1;
-        const arr = [...cards];
-        arr.splice(index, 1);
-        setCards(arr);
+        let test = {...cards};
+        test.cards.splice(index, 1);
+        setCards(test);
     }
 
     const onLogout = () => {
@@ -59,6 +62,14 @@ const Section = (props) => {
             .then(navigate('/'));
     }
 
+    const getCardData = () => {
+        DB.readUserData(state.id)
+        .then(res => setCards(res.cards));
+    }
+
+    useEffect(() => {
+        getCardData();
+    }, [])
 
     return (
             <section>

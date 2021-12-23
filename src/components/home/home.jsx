@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './home.module.css';
 
@@ -6,13 +6,27 @@ import styles from './home.module.css';
 const Home = (props) => {
     const navigate = useNavigate();
 
+    const goToMaker = userId => {
+        navigate('/section', {
+            state: {
+                id: userId
+            }
+        })
+    }
+
     const onLogin = (e) => {
         props.authService
             .login(e.target.innerText)
-            .then(res => props.successLogin(res.additionalUserInfo.profile))
+            .then(res => goToMaker(res.user.uid))
             .catch((err) => console.log(`로그인 도중 에러가 발생했습니다 : ${err}`))
-            .then(navigate('./section'));
     }
+
+    useEffect(() => {
+        props.authService
+        .onAuthChange((user) => {
+            user && goToMaker(user.uid);
+        })
+    });
 
     return(
         <div className={styles.home_container}>
@@ -21,8 +35,6 @@ const Home = (props) => {
                     <img src="./images/logo.png" alt="main logo" />
                     <h1>Business Card Maker</h1>
                 </header>
-                {/* test */}
-                <img src={props.thumbnail} alt="blahblah" />
                 <div className={styles.login_center}>
                     <p>Login</p>
                     <ul className={styles.social_btns}>

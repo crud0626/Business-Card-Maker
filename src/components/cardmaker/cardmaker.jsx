@@ -12,8 +12,8 @@ const CardMaker = (props) => {
     return (
         <div className={styles.card_container}>
             <div key={props.card.id} className={styles.inputs_container}>
-                <input type="text" name='name' placeholder='Name' onKeyUp={onInputEvent} />
-                <input type="text" name='company' placeholder='Company' onKeyUp={onInputEvent} />
+                <input type="text" name='name' placeholder='Name' value={props.card.name} onChange={onInputEvent} />
+                <input type="text" name='company' placeholder='Company' value={props.card.company} onChange={onInputEvent} />
                 <select name="color" onChange={onInputEvent}>
                     <option value="#385461">Green</option>
                     <option value="white">White</option>
@@ -24,11 +24,11 @@ const CardMaker = (props) => {
                 </select>
             </div>
             <div className={styles.inputs_container}>
-                <input type="text" name='title' placeholder='Title' onKeyUp={onInputEvent} />
-                <input type="text" name='email' placeholder='E-mail' onKeyUp={onInputEvent} />
+                <input type="text" name='title' placeholder='Title' value={props.card.title} onChange={onInputEvent} />
+                <input type="text" name='email' placeholder='E-mail' value={props.card.email} onChange={onInputEvent} />
             </div>
             <div className={styles.inputs_container}>
-                <input type="text" name='message' placeholder='Message' onKeyUp={onInputEvent} />
+                <input type="text" name='message' placeholder='Message' value={props.card.message} onChange={onInputEvent} />
             </div>
             <div className={`${styles.inputs_container} ${styles.inputs_btns}`}>
                 <button>Image</button>
