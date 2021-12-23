@@ -5,6 +5,7 @@ import CardPreviewSection from '../cardpreviewsection/cardpreviewsection';
 
 import styles from './section.module.css';
 import Database from '../../service/database';
+import Cloudinary from '../../service/cloudinary';
 
 
 const Section = (props) => {
@@ -12,6 +13,20 @@ const Section = (props) => {
     const { state } = useLocation();
 
     const DB = new Database();
+    const cloudinary = new Cloudinary();
+
+    const changeImg = (file, id) => {
+        cloudinary.uploadImg(file, id)
+        .then(url => {
+            const target = cards.filter(card => card.id === id);
+            const index = cards.indexOf(target[0]);
+            const arr = [...cards];
+            arr[index].img = url;
+
+            setCards(arr);
+            DB.writeUserData(state.id, arr);
+        });
+    }
 
     const [cards, setCards] = useState([{
         id: 1,
@@ -20,6 +35,7 @@ const Section = (props) => {
         color: "#385461",
         title: "",
         email: "",
+        img: "",
         message: "",
     }]);
 
@@ -37,12 +53,14 @@ const Section = (props) => {
         let arr = [...cards];
         arr.push(
             {
+                // 현재 있는 카드 전체 다 삭제하고 다시 할 때 받아올 id 가 없음. 조건걸어줘야함.
                 id: cards[cards.length - 1].id + 1,
                 name: "",
                 company: "",
                 color: "#385461",
                 title: "",
                 email: "",
+                img: "",
                 message: "",
             }
         )
@@ -67,6 +85,7 @@ const Section = (props) => {
     }
 
     const getCardData = () => {
+        console.log(state.id);
         DB.readUserData(state.id)
         .then(res => {
             if(res === null) {
@@ -77,6 +96,7 @@ const Section = (props) => {
                     color: "#385461",
                     title: "",
                     email: "",
+                    img: "",
                     message: "",
                 }]);
             } else {
@@ -102,6 +122,7 @@ const Section = (props) => {
                         onKeyUp={onKeyUp}
                         addCard={addCard}
                         deleteCard={deleteCard}
+                        changeImg={changeImg}
                     />
                     <CardPreviewSection
                         cards={cards}

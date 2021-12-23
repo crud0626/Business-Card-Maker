@@ -1,12 +1,18 @@
 import React from 'react';
 import styles from './cardmaker.module.css';
 
+
 const CardMaker = (props) => {
     const onInputEvent = (e) => {
         props.onKeyUp(props.card.id, e.target.name, e.target.value);
     }
     const deleteKeyUp = () => {
         props.deleteCard(props.card.id);
+    }
+
+    const setImage = () => {
+        const file = document.querySelector(`#imgForm${props.card.id}`).files[0];
+        props.changeImg(file, props.card.id);
     }
     
     return (
@@ -31,7 +37,11 @@ const CardMaker = (props) => {
                 <input type="text" name='message' placeholder='Message' value={props.card.message} onChange={onInputEvent} />
             </div>
             <div className={`${styles.inputs_container} ${styles.inputs_btns}`}>
-                <button>Image</button>
+                {/* onchange먹여도 됨. */}
+                <form action="#"onChange={setImage}>
+                    <input type="file" name="files[]" id={`imgForm${props.card.id}`} accept="image/*" />
+                    {/* <input type="submit" value="Upload Files" name="submit" /> */}
+                </form>
                 <button className={styles.del_btn} onClick={deleteKeyUp}>Delete</button>
             </div>
         </div>

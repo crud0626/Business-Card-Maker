@@ -15,10 +15,12 @@ const CardPreview = ({card}) => {
         };
     }
 
+    const thumbnail = !card.img ?"./images/default_logo.png" : card.img;
+
     return (
         <div style={bg} className={styles.card_container}>
             <div className={styles.thumbnail}>
-                <img src="./images/default_logo.png" alt="default logo" />
+                <img src={thumbnail} alt="card_thumbnial" />
             </div>
             <div className={styles.info}>
                 <p>{card.name}</p>

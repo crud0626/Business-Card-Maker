@@ -3603,6 +3603,29 @@ cliui@^7.0.2:
     strip-ansi "^6.0.0"
     wrap-ansi "^7.0.0"
 
+cloudinary-core@^2.10.2, cloudinary-core@^2.11.3:
+  version "2.12.0"
+  resolved "https://registry.yarnpkg.com/cloudinary-core/-/cloudinary-core-2.12.0.tgz#fe20231e7bf6a52116c61a2a03c04fcc60b968a3"
+  integrity sha512-EXvnWuq3Ah6pZHB2vEfkrJ4tCGlccZo3xsmt1f+bmrB53jU42ZrnX+v8xKRMot9c/STSO7GPbxbhJQ/z/xRazg==
+
+cloudinary-react@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/cloudinary-react/-/cloudinary-react-1.7.0.tgz#c85f131acc97284453d94363c2219022dc6f1d63"
+  integrity sha512-Q2fQrQ+NwJ1Ei5ISHfWX7cZfC9z71OeOZYQv4MV8sDEDVCml2cvRexvbQ7ksDvqkYd3SCegn5vMDuHp5w3NlCQ==
+  dependencies:
+    cloudinary-core "^2.11.3"
+    prop-types "^15.6.2"
+
+cloudinary@^1.27.1:
+  version "1.27.1"
+  resolved "https://registry.yarnpkg.com/cloudinary/-/cloudinary-1.27.1.tgz#41abace12827dd1edc06ff511d8da2e261b3845f"
+  integrity sha512-NrSVdzD2yJUMwL4UTfOjlq+bkc88SaNoZjhibLnpI40c46vfIlz2Y77R9HfgYIQ1Lx/k+U1WKZuiQ5Z2Wd2Dsg==
+  dependencies:
+    cloudinary-core "^2.10.2"
+    core-js "3.6.5"
+    lodash "^4.17.11"
+    q "^1.5.1"
+
 co@^4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/co/-/co-4.6.0.tgz#6ea6bdf3d853ae54ccb8e47bfa0bf3f9031fb184"
@@ -9220,6 +9243,15 @@ prompts@2.4.0, prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
+prop-types@^15.6.2:
+  version "15.8.0"
+  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.0.tgz#d237e624c45a9846e469f5f31117f970017ff588"
+  integrity sha512-fDGekdaHh65eI3lMi5OnErU6a8Ighg2KjcjQxO7m8VHyWjcPyj5kiOgV1LQDOOOgVy3+5FgjXvdSSX7B8/5/4g==
+  dependencies:
+    loose-envify "^1.4.0"
+    object-assign "^4.1.1"
+    react-is "^16.13.1"
+
 prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
@@ -9318,7 +9350,7 @@ punycode@^2.1.0, punycode@^2.1.1:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
 
-q@^1.1.2:
+q@^1.1.2, q@^1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
   integrity sha1-fjL3W0E4EpHQRhHxvxQQmsAGUdc=
@@ -9459,7 +9491,7 @@ react-error-overlay@^6.0.9:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.9.tgz#3c743010c9359608c375ecd6bc76f35d93995b0a"
   integrity sha512-nQTTcUu+ATDbrSD1BZHr5kgSD4oF8OFjxun8uAaL8RwPBacGBNPf/yAuVVdx17N8XNzRDMrZ9XcKZHCjPW+9ew==
 
-react-is@^16.8.1:
+react-is@^16.13.1, react-is@^16.8.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==

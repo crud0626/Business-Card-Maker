@@ -13,6 +13,7 @@ const CardMakerSection = (props) => {
                     card={card}
                     onKeyUp={props.onKeyUp}
                     deleteCard={props.deleteCard}
+                    changeImg={props.changeImg}
                 />
             ))}
             </div>
