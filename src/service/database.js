@@ -15,7 +15,6 @@ class Database {
         // return firebase.database().ref('/users/333').once('value')
         .then((snapshot) => {
             let test = snapshot.val();
-            console.log(test);
             return test;
         })
         // 처음 실행하자마자 에러가 한번 잡히는데 이유가 뭘지 찾아보자.

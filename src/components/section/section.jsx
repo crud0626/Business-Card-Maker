@@ -23,10 +23,11 @@ const Section = (props) => {
         message: "",
     }]);
 
-    // index말고 다른걸로 수정하기.
     const onKeyUp = (id, name, value) => {
-        const index = id - 1;
+        const target = cards.filter(card => card.id === id);
+        const index = cards.indexOf(target[0]);
         const arr = [...cards];
+        
         arr[index][name] = value;
         setCards(arr);
         DB.writeUserData(state.id, arr);
@@ -50,8 +51,9 @@ const Section = (props) => {
     }
 
     const deleteCard = (id) => {
-        const index = id - 1;
-        let arr = [...cards];
+        const target = cards.filter(card => card.id === id);
+        const index = cards.indexOf(target[0]);
+        const arr = [...cards];
         arr.splice(index, 1);
         setCards(arr);
         DB.writeUserData(state.id, arr);
@@ -66,7 +68,21 @@ const Section = (props) => {
 
     const getCardData = () => {
         DB.readUserData(state.id)
-        .then(res => setCards(res.cards));
+        .then(res => {
+            if(res === null) {
+                setCards([{
+                    id: 1,
+                    name: "",
+                    company: "",
+                    color: "#385461",
+                    title: "",
+                    email: "",
+                    message: "",
+                }]);
+            } else {
+                setCards(res.cards)
+            }
+        });
     }
 
     useEffect(() => {
