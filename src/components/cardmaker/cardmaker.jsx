@@ -37,11 +37,11 @@ const CardMaker = (props) => {
                 <input type="text" name='message' placeholder='Message' value={props.card.message} onChange={onInputEvent} />
             </div>
             <div className={`${styles.inputs_container} ${styles.inputs_btns}`}>
-                {/* onchange먹여도 됨. */}
-                <form action="#"onChange={setImage}>
-                    <input type="file" name="files[]" id={`imgForm${props.card.id}`} accept="image/*" />
-                    {/* <input type="submit" value="Upload Files" name="submit" /> */}
-                </form>
+                {/* label내부 가변적으로 Upload Photo | Change Photo */}
+                <label className={styles.file_btn} for={`imgForm${props.card.id}`}>
+                    {props.card.img? "Change Photo" : "Upload Photo"}
+                </label>
+                <input type="file" name="files[]" onChange={setImage} id={`imgForm${props.card.id}`} accept="image/*" />
                 <button className={styles.del_btn} onClick={deleteKeyUp}>Delete</button>
             </div>
         </div>

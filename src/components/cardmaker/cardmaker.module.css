@@ -1,4 +1,4 @@
-@value makerWhite, makerGreen from './../../common/colors.css';
+@value makerWhite, makerWheat, makerGreen from './../../common/colors.css';
 
 .card_container {
   margin-bottom: 20px;
@@ -9,24 +9,24 @@
   width: 100%;
 }
 
+.inputs_container > input[type="file"] {
+  display: none;
+}
+
 .inputs_container > * {
   min-width: 0;
   flex-grow: 1;
   font-size: 1rem;
   padding: 4px 0 4px 5px;
-}
-
-.inputs_btns > button {
-  background-color: transparent;
   border: 1px solid gray;
   cursor: pointer;
+}
+
+.file_btn:hover {
+  background-color: makerWheat;
 }
 
 .inputs_btns > .del_btn {
   color: makerWhite;
   background-color: makerGreen;
-}
-
-.addBtn_container {
-  margin-top: 20px;
 }

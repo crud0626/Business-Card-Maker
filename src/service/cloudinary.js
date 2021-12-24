@@ -5,12 +5,13 @@ export default class Cloudinary {
     }
 
 
-    uploadImg = (file, id) => {
+    uploadImg = (file) => {
         const url = `https://api.cloudinary.com/v1_1/${this.cloudName}/image/upload`;
     
+        // preset문제?
         const formData = new FormData();
         formData.append("file", file);
-        formData.append("upload_preset", this.preset);
+        formData.append("upload_preset", process.env.REACT_APP_CLOUDINARY_PRESET);
         formData.append("use_filname", "true");
 
         return fetch(url, {
@@ -19,6 +20,5 @@ export default class Cloudinary {
         })
         .then(response => response.json())
         .then(res => res.url);
-        
     };
 }

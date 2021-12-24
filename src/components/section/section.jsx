@@ -16,7 +16,7 @@ const Section = (props) => {
     const cloudinary = new Cloudinary();
 
     const changeImg = (file, id) => {
-        cloudinary.uploadImg(file, id)
+        cloudinary.uploadImg(file)
         .then(url => {
             const target = cards.filter(card => card.id === id);
             const index = cards.indexOf(target[0]);
