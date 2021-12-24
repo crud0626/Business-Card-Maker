@@ -1,7 +1,7 @@
-// import { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './components/home/home';
 import Section from './components/section/section';
+import './app.css';
 
 function App({authService}) {
   return (

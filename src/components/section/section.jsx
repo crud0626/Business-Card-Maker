@@ -7,6 +7,17 @@ import styles from './section.module.css';
 import Database from '../../service/database';
 import Cloudinary from '../../service/cloudinary';
 
+// 얘를 밖에 두는거랑 안쪽에 두는거랑 차이가 뭘까 스파 시바
+const cardTemplate = {
+    id: 1,
+    name: "",
+    company: "",
+    color: "#385461",
+    title: "",
+    email: "",
+    img: "",
+    message: "",
+};
 
 const Section = (props) => {
     const navigate = useNavigate();
@@ -16,7 +27,7 @@ const Section = (props) => {
     const cloudinary = new Cloudinary();
 
     const changeImg = (file, id) => {
-        cloudinary.uploadImg(file)
+        return cloudinary.uploadImg(file)
         .then(url => {
             const target = cards.filter(card => card.id === id);
             const index = cards.indexOf(target[0]);
@@ -25,19 +36,10 @@ const Section = (props) => {
 
             setCards(arr);
             DB.writeUserData(state.id, arr);
-        });
+        })
     }
 
-    const [cards, setCards] = useState([{
-        id: 1,
-        name: "",
-        company: "",
-        color: "#385461",
-        title: "",
-        email: "",
-        img: "",
-        message: "",
-    }]);
+    const [cards, setCards] = useState([]);
 
     const onKeyUp = (id, name, value) => {
         const target = cards.filter(card => card.id === id);
@@ -50,20 +52,13 @@ const Section = (props) => {
     }
 
     const addCard = () => {
-        let arr = [...cards];
-        arr.push(
-            {
-                // 현재 있는 카드 전체 다 삭제하고 다시 할 때 받아올 id 가 없음. 조건걸어줘야함.
-                id: cards[cards.length - 1].id + 1,
-                name: "",
-                company: "",
-                color: "#385461",
-                title: "",
-                email: "",
-                img: "",
-                message: "",
-            }
-        )
+        let arr;
+        if (cards.length === 0) {
+            arr = [{...cardTemplate}];
+        } else {
+            arr = [...cards];
+            arr.push({...cardTemplate, id: cards[cards.length - 1].id + 1});
+        }
         setCards(arr);
         DB.writeUserData(state.id, arr);
     }
@@ -89,16 +84,7 @@ const Section = (props) => {
         DB.readUserData(state.id)
         .then(res => {
             if(res === null) {
-                setCards([{
-                    id: 1,
-                    name: "",
-                    company: "",
-                    color: "#385461",
-                    title: "",
-                    email: "",
-                    img: "",
-                    message: "",
-                }]);
+                setCards([{...cardTemplate}]);
             } else {
                 setCards(res.cards)
             }

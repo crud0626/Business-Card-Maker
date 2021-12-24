@@ -12,7 +12,17 @@ const CardMaker = (props) => {
 
     const setImage = () => {
         const file = document.querySelector(`#imgForm${props.card.id}`).files[0];
-        props.changeImg(file, props.card.id);
+        const loading = document.querySelector(`#loading${props.card.id}`);
+        const label = document.querySelector(`#label${props.card.id}`);
+        
+        loading.classList.remove("none");
+        label.classList.add("none");
+
+        props.changeImg(file, props.card.id)
+        .then(() => {
+            loading.classList.add("none");
+            label.classList.remove("none");
+        })
     }
     
     return (
@@ -38,10 +48,18 @@ const CardMaker = (props) => {
             </div>
             <div className={`${styles.inputs_container} ${styles.inputs_btns}`}>
                 {/* label내부 가변적으로 Upload Photo | Change Photo */}
-                <label className={styles.file_btn} for={`imgForm${props.card.id}`}>
+                <label id={`label${props.card.id}`} className={styles.file_btn} for={`imgForm${props.card.id}`}>
                     {props.card.img? "Change Photo" : "Upload Photo"}
                 </label>
                 <input type="file" name="files[]" onChange={setImage} id={`imgForm${props.card.id}`} accept="image/*" />
+                <div id={`loading${props.card.id}`} className={`${styles.loading_spinner_bar} none`}>
+                    <div className={styles.loading_spinner}>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
                 <button className={styles.del_btn} onClick={deleteKeyUp}>Delete</button>
             </div>
         </div>
