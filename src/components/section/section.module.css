@@ -1,17 +1,5 @@
-@value makerGreen from './../../common/colors.css';
-
 .section {
   display: flex;
   height: 80%;
   background-color: white;
-}
-
-.section_bottom {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 5%;
-  background-color: makerGreen;
-  color: white;
-  text-align: center;
 }

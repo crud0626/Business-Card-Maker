@@ -7,6 +7,7 @@ import styles from './section.module.css';
 import Database from '../../service/database';
 import Cloudinary from '../../service/cloudinary';
 import Header from '../header/header';
+import Footer from '../footer/footer';
 
 const Section = (props) => {
     const navigate = useNavigate();
@@ -72,12 +73,12 @@ const Section = (props) => {
         DB.writeUserData(userId, arr);
     }
 
-    const onLogout = () => {
+    const onLogout = useCallback(() => {
         props.authService
             .logout()
             .catch((err) => console.log(`로그아웃 도중 에러가 발생했습니다 : ${err}`))
             .then(navigate('/'));
-    }
+    },[])
 
     const getCardData = useCallback(() => {
         DB.readUserData(state.id)
@@ -117,9 +118,7 @@ const Section = (props) => {
                         cards={cards}
                     />
                 </div>
-                <div className={styles.section_bottom}>
-                    <span>Welcome to Business Card Maker!</span>
-                </div>
+                <Footer />
             </section>
     );
 
