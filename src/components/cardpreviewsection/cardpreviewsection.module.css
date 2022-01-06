@@ -3,7 +3,7 @@
 .cardpreview_container {
   width: 50%;
   text-align: center;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .cardpreview_container > p {

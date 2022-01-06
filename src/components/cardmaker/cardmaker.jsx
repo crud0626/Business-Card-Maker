@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styles from './cardmaker.module.css';
 
 
-const CardMaker = (props) => {
+const CardMaker = memo((props) => {
     const onInputEvent = (e) => {
         props.onKeyUp(props.card.id, e.target.name, e.target.value);
     }
@@ -48,7 +48,7 @@ const CardMaker = (props) => {
             </div>
             <div className={`${styles.inputs_container} ${styles.inputs_btns}`}>
                 {/* label내부 가변적으로 Upload Photo | Change Photo */}
-                <label id={`label${props.card.id}`} className={styles.file_btn} for={`imgForm${props.card.id}`}>
+                <label id={`label${props.card.id}`} className={styles.file_btn} htmlFor={`imgForm${props.card.id}`}>
                     {props.card.img? "Change Photo" : "Upload Photo"}
                 </label>
                 <input type="file" name="files[]" onChange={setImage} id={`imgForm${props.card.id}`} accept="image/*" />
@@ -64,6 +64,6 @@ const CardMaker = (props) => {
             </div>
         </div>
     );
-};
+})
 
 export default CardMaker;

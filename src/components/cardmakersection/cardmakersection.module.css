@@ -5,7 +5,7 @@
   width: 50%;
   border-right: 1px solid black;
   text-align: center;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .cardmaker_container > p {

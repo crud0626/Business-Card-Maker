@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import CardMakerSection from '../cardmakersection/cardmakersection';
 import CardPreviewSection from '../cardpreviewsection/cardpreviewsection';
@@ -7,24 +7,25 @@ import styles from './section.module.css';
 import Database from '../../service/database';
 import Cloudinary from '../../service/cloudinary';
 
-// 얘를 밖에 두는거랑 안쪽에 두는거랑 차이가 뭘까 스파 시바
-const cardTemplate = {
-    id: 1,
-    name: "",
-    company: "",
-    color: "#385461",
-    title: "",
-    email: "",
-    img: "",
-    message: "",
-};
-
 const Section = (props) => {
     const navigate = useNavigate();
     const { state } = useLocation();
+    const [userId, setUserId] = useState();
+    const [cards, setCards] = useState([]);
 
     const DB = new Database();
     const cloudinary = new Cloudinary();
+
+    const cardTemplate = {
+        id: 1,
+        name: "",
+        company: "",
+        color: "#385461",
+        title: "",
+        email: "",
+        img: "",
+        message: "",
+    };
 
     const changeImg = (file, id) => {
         return cloudinary.uploadImg(file)
@@ -39,8 +40,6 @@ const Section = (props) => {
         })
     }
 
-    const [cards, setCards] = useState([]);
-
     const onKeyUp = (id, name, value) => {
         const target = cards.filter(card => card.id === id);
         const index = cards.indexOf(target[0]);
@@ -48,7 +47,7 @@ const Section = (props) => {
         
         arr[index][name] = value;
         setCards(arr);
-        DB.writeUserData(state.id, arr);
+        DB.writeUserData(userId, arr);
     }
 
     const addCard = () => {
@@ -60,7 +59,7 @@ const Section = (props) => {
             arr.push({...cardTemplate, id: cards[cards.length - 1].id + 1});
         }
         setCards(arr);
-        DB.writeUserData(state.id, arr);
+        DB.writeUserData(userId, arr);
     }
 
     const deleteCard = (id) => {
@@ -69,7 +68,7 @@ const Section = (props) => {
         const arr = [...cards];
         arr.splice(index, 1);
         setCards(arr);
-        DB.writeUserData(state.id, arr);
+        DB.writeUserData(userId, arr);
     }
 
     const onLogout = () => {
@@ -79,8 +78,7 @@ const Section = (props) => {
             .then(navigate('/'));
     }
 
-    const getCardData = () => {
-        console.log(state.id);
+    const getCardData = useCallback(() => {
         DB.readUserData(state.id)
         .then(res => {
             if(res === null) {
@@ -89,11 +87,17 @@ const Section = (props) => {
                 setCards(res.cards)
             }
         });
-    }
+    }, [state.id, DB, setCards, cardTemplate])
 
     useEffect(() => {
-        getCardData();
-    }, [])
+        if (state.id) {
+            setUserId(state.id);
+            getCardData(state.id);
+        } else {
+            navigate('/');
+        }
+    }, [state.id])
+    // 이 부분 추가 보강피룡.
 
     return (
             <section>
