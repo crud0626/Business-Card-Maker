@@ -1,7 +1,7 @@
-import React, { memo } from 'react';
+import React from 'react';
 import styles from './cardpreview.module.css';
 
-const CardPreview = memo(({card}) => {
+const CardPreview = ({card}) => {
     let bg = {};
     if (card.color === "white" || card.color ===  "#e8e7e6") {
         bg = {
@@ -20,7 +20,7 @@ const CardPreview = memo(({card}) => {
     return (
         <div style={bg} className={styles.card_container}>
             <div className={styles.thumbnail}>
-                <img src={thumbnail} alt="card_thumbnial" />
+                <img src={thumbnail} alt="card_thumbnail" />
             </div>
             <div className={styles.info}>
                 <p>{card.name}</p>
@@ -32,6 +32,6 @@ const CardPreview = memo(({card}) => {
             </div>
         </div>
     );
-})
+}
 
 export default CardPreview;

@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import styles from './cardmaker.module.css';
 
 
-const CardMaker = memo((props) => {
+const CardMaker = (props) => {
     const onInputEvent = (e) => {
         props.onKeyUp(props.card.id, e.target.name, e.target.value);
     }
@@ -64,6 +64,6 @@ const CardMaker = memo((props) => {
             </div>
         </div>
     );
-})
+}
 
 export default CardMaker;

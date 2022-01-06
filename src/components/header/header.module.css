@@ -1,6 +1,6 @@
 @value makerGreen, makerGrey from './../../common/colors.css';
 
-.section_top {
+.header {
     display: flex;
     position: relative;
     flex-direction: column;
@@ -11,11 +11,11 @@
     background-color: makerGreen;
 }
 
-.section_top > img {
+.header_logo {
     width: 50px;
 }
 
-.section_top > h1 {
+.header > h1 {
     margin: 0;
 }
 

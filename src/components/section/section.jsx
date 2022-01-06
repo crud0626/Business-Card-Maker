@@ -78,7 +78,7 @@ const Section = (props) => {
             .logout()
             .catch((err) => console.log(`로그아웃 도중 에러가 발생했습니다 : ${err}`))
             .then(navigate('/'));
-    },[])
+    },[props.authService])
 
     const getCardData = useCallback(() => {
         DB.readUserData(state.id)
