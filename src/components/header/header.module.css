@@ -1,0 +1,36 @@
+@value makerGreen, makerGrey from './../../common/colors.css';
+
+.section_top {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 15%;
+    color: white;
+    background-color: makerGreen;
+}
+
+.section_top > img {
+    width: 50px;
+}
+
+.section_top > h1 {
+    margin: 0;
+}
+
+.logout_btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border: none;
+    border-radius: 3px;
+    background-color: white;
+    padding: 2px 5px;
+    cursor: pointer;
+}
+  
+.logout_btn:hover {
+    background-color: makerGrey;
+}
+  

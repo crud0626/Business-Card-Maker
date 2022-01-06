@@ -6,6 +6,7 @@ import CardPreviewSection from '../cardpreviewsection/cardpreviewsection';
 import styles from './section.module.css';
 import Database from '../../service/database';
 import Cloudinary from '../../service/cloudinary';
+import Header from '../header/header';
 
 const Section = (props) => {
     const navigate = useNavigate();
@@ -97,15 +98,13 @@ const Section = (props) => {
             navigate('/');
         }
     }, [state.id])
-    // 이 부분 추가 보강피룡.
+    // 에러 아직 못없앰.
 
     return (
             <section>
-                <div className={styles.section_top}>
-                    <img src="./images/logo.png" alt="main logo" />
-                    <h1 onClick={onKeyUp}>Business Card Maker</h1>
-                    <button className={styles.logout_btn} onClick={onLogout}>Logout</button>
-                </div>
+                <Header 
+                    onLogout={onLogout}
+                />
                 <div className={styles.section}>
                     <CardMakerSection 
                         cards={cards}
